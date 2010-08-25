@@ -2,12 +2,12 @@
 import pygtk
 pygtk.require('2.0')
 
+import sys
+import time
+
 import gtk
 import gnomeapplet
 import gobject
-import time
-import sys
-
 
 class Stopwatch():
     def __init__(self, applet, iid):
@@ -18,7 +18,7 @@ class Stopwatch():
         self.timeout_interval = 10000
 
         # [widget definitions]
-        self.vbox = gtk.VBox()
+        self.vbox = gtk.HBox()
         self.label = gtk.Label('0h 0m 0s')
         self.button_start_stop = gtk.Button(label='Start/Stop')
         self.button_start_stop.connect('clicked',  self.start_stop)
@@ -63,9 +63,6 @@ class Stopwatch():
         self.state = 0
         self.elapsed_time = 0
 
-
-
-
     #@staticmethod
     def _sec_to_human(self, sec):
         hours, rest = divmod(sec, 3600)
@@ -73,26 +70,31 @@ class Stopwatch():
         return 'H: %s M: %s S: %s' % (str(int(hours)), str(int(minutes)), str(int(sec)))
 
 
+def background_show(applet):
+    print "background: ", applet.get_background()
 
-# bonobo factory
-def stopwatch_applet_factory(applet, iid):
-    stopwatch = Stopwatch(applet,iid)
-    return gtk.TRUE
+def applet_factory(applet, iid):
+    print "Creating new applet instance"
+    #label = gtk.Label("Success!")
+    #applet.add(label)
+    app = Stopwatch(applet, iid)
+    applet.show_all()
+    return True
+
 
 if len(sys.argv) == 2 and sys.argv[1] == "run-in-window":
         main_window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         main_window.set_title("Python Applet Stopwatch")
         main_window.connect("destroy", gtk.main_quit)
         app = gnomeapplet.Applet()
-        stopwatch_applet_factory(app, None)
+        applet_factory(app, None)
         app.reparent(main_window)
         main_window.show_all()
         gtk.main()
         sys.exit()
 
-
 print "Starting factory"
 gnomeapplet.bonobo_factory("OAFIID:GNOME_PythonAppletStopwatch_Factory",
                            gnomeapplet.Applet.__gtype__,
-                           "hello", "0", stopwatch_applet_factory)
+                           "hello", "0", applet_factory)
 print "Factory ended"

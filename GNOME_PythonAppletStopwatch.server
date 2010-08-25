@@ -2,19 +2,19 @@
 
 <oaf_server iid="OAFIID:GNOME_PythonAppletStopwatch_Factory"
             type="exe"
-            location="stopwatch_applet.py">
+            location="/home/znotdead/projects/applet_stopwatch/applet.py">
 
         <oaf_attribute name="repo_ids" type="stringv">
                 <item value="IDL:Bonobo/GenericFactory:1.0"/>
                 <item value="IDL:Bonobo/Unknown:1.0"/>
         </oaf_attribute>
-        <oaf_attribute name="name" type="string" value="Stopwatch Applet"/>
-        <oaf_attribute name="description" type="string" value="Stopwatch Applet on Python by ZNOTDEAD"/>
+        <oaf_attribute name="name" type="string" value="PythonAppletStopwatch"/>
+        <oaf_attribute name="description" type="string" value="Python Applet Stopwatch"/>
 </oaf_server>
 
 <oaf_server iid="OAFIID:GNOME_PythonAppletStopwatch"
             type="factory"
-            location="OAFIID:GNOME_PythonAppletStopwtach_Factory">
+            location="OAFIID:GNOME_PythonAppletStopwatch_Factory">
 
         <oaf_attribute name="repo_ids" type="stringv">
                 <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
@@ -24,7 +24,7 @@
         <oaf_attribute name="name" type="string" value="PythonAppletStopwatch"/>
         <oaf_attribute name="description" type="string" value="Python Applet Stopwatch"/>
         <oaf_attribute name="panel:category" type="string" value="Utility"/>
-        <oaf_attribute name="panel:icon" type="string" value="bug-buddy.png"/>
+        <oaf_attribute name="panel:icon" type="string" value="gnome-set-time.png"/>
 </oaf_server>
 
 </oaf_info>
