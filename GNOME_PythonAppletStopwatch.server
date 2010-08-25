@@ -2,7 +2,7 @@
 
 <oaf_server iid="OAFIID:GNOME_PythonAppletStopwatch_Factory"
             type="exe"
-            location="/home/znotdead/projects/applet_stopwatch/applet.py">
+            location="/usr/lib/gnome-applets/stopwatch_applet.py">
 
         <oaf_attribute name="repo_ids" type="stringv">
                 <item value="IDL:Bonobo/GenericFactory:1.0"/>
