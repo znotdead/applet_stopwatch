@@ -1,0 +1,7 @@
+TODO:
+1. disable pause button when it not necessary
+2. move buttons to drop down menu
+3. make config to set timeout_interval
+4. use autotools and etc except setup.sh
+5. make tooltips after an hour and etc.
+6. make tooltips configurable
